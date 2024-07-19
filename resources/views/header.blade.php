@@ -1,12 +1,18 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+<header id="header">
+    <nav id="navbar">
+        <ul>
+            <li>
+                <a href="">Beranda</a>
+            </li>
+            <li>
+                <a href="">Politik</a>
+            </li>
+            <li>
+                <a href=""></a>
+            </li>
+            <li>
+                <a href=""></a>
+            </li>
+        </ul>
+    </nav>
+</header>
