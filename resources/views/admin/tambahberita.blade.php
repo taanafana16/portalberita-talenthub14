@@ -97,17 +97,17 @@
                                 </div>
                             </div>
 
-                            <!-- ======= Foto 3 ======= -->
+                            <!-- ======= Foto 2 ======= -->
                             <div class="form-group">
-                                <label for="kolomfoto3" class="block text-custom-color-text-table">Foto 3</label>
+                                <label for="kolomfoto2" class="block text-custom-color-text-table">Foto 2</label>
                                 <div class="flex mt-1">
                                     <span
                                         class="inline-flex items-center px-3 rounded-l-md border border-r-1 text-custom-footer sm:text-sm">
                                         <i class="fa-solid fa-upload"></i>
                                     </span>
-                                    <input type="file" id="kolomfoto3"
+                                    <input type="file" id="kolomfoto2"
                                         class="form-input flex-1 block w-full rounded-none rounded-r-md sm:text-sm text-custom-footer border"
-                                        name="foto3" accept="image/jpeg, image/png, image/jpg">
+                                        name="foto2" accept="image/jpeg, image/png, image/jpg">
                                 </div>
                                 <small class="text-red-500 text-xs">* Maximal Ukuran File Sebesar 2 MB dan Tipe File
                                     yang diupload berupa png, jpeg, atau jpg</small>
@@ -130,15 +130,15 @@
 
                             <!-- ======= Foto 2 ======= -->
                             <div class="form-group">
-                                <label for="kolomfoto2" class="block text-custom-color-text-table">Foto 2</label>
+                                <label for="kolomfoto3" class="block text-custom-color-text-table">Foto 3</label>
                                 <div class="flex mt-1">
                                     <span
                                         class="inline-flex items-center px-3 rounded-l-md border border-r-1 text-custom-footer sm:text-sm">
                                         <i class="fa-solid fa-upload"></i>
                                     </span>
-                                    <input type="file" id="kolomfoto2"
+                                    <input type="file" id="kolomfoto3"
                                         class="form-input flex-1 block w-full rounded-none rounded-r-md sm:text-sm text-custom-footer border"
-                                        name="foto2" accept="image/jpeg, image/png, image/jpg">
+                                        name="foto3" accept="image/jpeg, image/png, image/jpg">
                                 </div>
                                 <small class="text-red-500 text-xs">* Maximal Ukuran File Sebesar 2 MB dan Tipe File
                                     yang diupload berupa png, jpeg, atau jpg</small>
