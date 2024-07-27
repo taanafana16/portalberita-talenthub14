@@ -1,19 +1,20 @@
-@import 'swiper/swiper-bundle.css';
+/* Import plugin CSS */
 @import '@fortawesome/fontawesome-free/css/all.css';
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import "datatables.net-dt/css/dataTables.dataTables.css";
+@import 'swiper/swiper-bundle.css';
+@import "flowbite/dist/flowbite.css";
 
-.breadcrumb-item + .breadcrumb-item::before {
-    content: "/";
-    padding: 0 0.5rem;
-    color: #83B582; 
-  }
-
-  .placeholder-green::placeholder {
-    color: #88AB8E;
-}
-
+/* Import Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "/";
+  padding: 0 0.5rem;
+  color: #83B582; 
+}
+
+.placeholder-green::placeholder {
+  color: #88AB8E;
+}

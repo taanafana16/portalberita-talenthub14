@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\BerandaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,29 +20,28 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-//Admin
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+//Public Routes
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('/tentang', [BerandaController::class, 'tentang'])->name('tentang');
+Route::get('/kontak', [BerandaController::class, 'kontak'])->name('kontak');
+
+
+// Authentication routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Admin and Editor routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard'); // Bisa diakses oleh admin dan editor
     Route::resource('/berita', BeritaController::class);
     Route::resource('/kategori', KategoriController::class);
-    Route::get('/pengaturan', [AdminController::class, 'pengaturan'])->name('pengaturan');
+    Route::resource('/user', UserController::class);
+    Route::resource('/profil', ProfilController::class);
+    Route::get('admin/profil/{profil}/editprofil', [ProfilController::class, 'show'])->name('admin.profil.edit');
 });
-//User
-Route::get('/', function () {
-    return view('/user/landingpage');
-});
-Route::get('/politik', function () {
-    return view('/user/politik');
-})->name('politik');
-Route::get('/ekonomi', function () {
-    return view('/user/ekonomi');
-})->name('ekonomi');
-Route::get('/teknologi', function () {
-    return view('/user/teknologi');
-})->name('teknologi');
-Route::get('/hiburan', function () {
-    return view('/user/hiburan');
-})->name('hiburan');
-Route::get('/olahraga', function () {
-    return view('/user/olahraga');
-})->name('olahraga');
+
+// Admin-only routes
+// Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
+//     Route::resource('/user', UserController::class); // Hanya admin yang bisa akses
+// });

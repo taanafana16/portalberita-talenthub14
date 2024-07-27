@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Kategori;
+
 
 class KategoriController extends Controller
 {
@@ -11,7 +15,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('admin/kategori');
+
+        // Mengambil data dari model
+        $kategori = Kategori::all(); // pastikan 'Category' adalah model yang benar
+        return view('admin/kategori/index', compact('kategori'));
     }
 
     /**
@@ -19,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('admin/tambahkategoriberita');
+        return view('admin/kategori/tambah');
     }
 
     /**
@@ -27,38 +34,59 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // Validasi input
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
 
+        $kategori = Kategori::create([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        // Redirect dengan pesan sukses atau error
+        if ($kategori) {
+            return redirect()->route('admin.kategori.index')->with('success', 'Data Kategori Berhasil Ditambahkan');
+        } else {
+            return redirect()->route('admin.kategori.create')->with('error', 'Data Kategori Tidak Berhasil Ditambahkan');
+        }
+    }
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Kategori $kategori)
     {
-        return view('admin/detailkategori');
+        // Kembalikan tampilan dengan data kategori
+        return view('admin/kategori/detail', compact('kategori'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Kategori $kategori)
     {
-        return view('admin/editkategori');
+        return view('admin.kategori.edit', compact('kategori'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Kategori $kategori)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $kategori->update($request->all());
+        return redirect()->route('admin.kategori.index')->with('success', 'Data Kategori Berhasil Di Ubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Kategori $kategori,)
     {
-        //
+        $kategori->delete();
+        return redirect()->route('admin.kategori.index')->with('success', 'Data Kategori Berhasil Di Hapus');
     }
 }
