@@ -24,6 +24,9 @@ use App\Http\Controllers\BerandaController;
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/tentang', [BerandaController::class, 'tentang'])->name('tentang');
 Route::get('/kontak', [BerandaController::class, 'kontak'])->name('kontak');
+Route::get('/berita/{id}', [BerandaController::class, 'detail'])->name('berita.detail');
+Route::get('/kategori/{id}', [BerandaController::class, 'detailkat'])->name('kategori.detailkat');
+
 
 
 // Authentication routes

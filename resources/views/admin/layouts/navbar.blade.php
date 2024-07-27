@@ -13,7 +13,7 @@
                     <p class="text-sm text-color3 capitalize">{{ Auth::user()->role->nama }}</p>
                 </div>
                 <div class="w-10 h-10 rounded-full overflow-hidden">
-                    <img src="{{ asset(Auth::user()->foto) }}" alt="User Image" class="w-full h-full object-cover">
+                    <img src="{{ asset('storage/' . auth()->user()->foto) }}" alt="User Image" class="w-full h-full object-cover">
                 </div>
             </button>
             <div class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg m-6" id="user-menu">

@@ -19,6 +19,7 @@
         <div class="flex flex-1">
             <main class="flex-1 p-4">
                 @yield('content')
+                @yield('aside')
             </main>
         </div>
         <!-- Footer -->
